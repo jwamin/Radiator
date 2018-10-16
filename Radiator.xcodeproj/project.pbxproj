@@ -1,0 +1,391 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3DEEFDA32176374E00FD766C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEEFDA22176374E00FD766C /* AppDelegate.swift */; };
+		3DEEFDA52176374E00FD766C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEEFDA42176374E00FD766C /* ViewController.swift */; };
+		3DEEFDA82176374E00FD766C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DEEFDA62176374E00FD766C /* Main.storyboard */; };
+		3DEEFDAA2176374E00FD766C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DEEFDA92176374E00FD766C /* Assets.xcassets */; };
+		3DEEFDAD2176374E00FD766C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DEEFDAB2176374E00FD766C /* LaunchScreen.storyboard */; };
+		3DEEFE0421766B3100FD766C /* libRadiatorConverter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DEEFDE32176604B00FD766C /* libRadiatorConverter.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3DEEFD9F2176374E00FD766C /* Radiator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radiator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DEEFDA22176374E00FD766C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3DEEFDA42176374E00FD766C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3DEEFDA72176374E00FD766C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3DEEFDA92176374E00FD766C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3DEEFDAC2176374E00FD766C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3DEEFDAE2176374E00FD766C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DEEFDE32176604B00FD766C /* libRadiatorConverter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libRadiatorConverter.a; sourceTree = "<group>"; };
+		3DEEFDE6217660BF00FD766C /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
+		3DEEFE192176748400FD766C /* convertAngle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = convertAngle.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3DEEFD9C2176374E00FD766C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DEEFE0421766B3100FD766C /* libRadiatorConverter.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3DEEFD962176374E00FD766C = {
+			isa = PBXGroup;
+			children = (
+				3DEEFE02217669C900FD766C /* lib */,
+				3DEEFE01217669BD00FD766C /* include */,
+				3DEEFDA12176374E00FD766C /* Radiator */,
+				3DEEFDA02176374E00FD766C /* Products */,
+				3DEEFDC521765CF700FD766C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3DEEFDA02176374E00FD766C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3DEEFD9F2176374E00FD766C /* Radiator.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3DEEFDA12176374E00FD766C /* Radiator */ = {
+			isa = PBXGroup;
+			children = (
+				3DEEFDA22176374E00FD766C /* AppDelegate.swift */,
+				3DEEFDA42176374E00FD766C /* ViewController.swift */,
+				3DEEFDA62176374E00FD766C /* Main.storyboard */,
+				3DEEFDA92176374E00FD766C /* Assets.xcassets */,
+				3DEEFDAB2176374E00FD766C /* LaunchScreen.storyboard */,
+				3DEEFDAE2176374E00FD766C /* Info.plist */,
+			);
+			path = Radiator;
+			sourceTree = "<group>";
+		};
+		3DEEFDC521765CF700FD766C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3DEEFE01217669BD00FD766C /* include */ = {
+			isa = PBXGroup;
+			children = (
+				3DEEFE192176748400FD766C /* convertAngle.h */,
+				3DEEFDE6217660BF00FD766C /* Bridge.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		3DEEFE02217669C900FD766C /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				3DEEFDE32176604B00FD766C /* libRadiatorConverter.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3DEEFD9E2176374E00FD766C /* Radiator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3DEEFDB12176374E00FD766C /* Build configuration list for PBXNativeTarget "Radiator" */;
+			buildPhases = (
+				3DEEFD9B2176374E00FD766C /* Sources */,
+				3DEEFD9C2176374E00FD766C /* Frameworks */,
+				3DEEFD9D2176374E00FD766C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Radiator;
+			productName = Radiator;
+			productReference = 3DEEFD9F2176374E00FD766C /* Radiator.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3DEEFD972176374E00FD766C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "Joss Manger";
+				TargetAttributes = {
+					3DEEFD9E2176374E00FD766C = {
+						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
+					};
+				};
+			};
+			buildConfigurationList = 3DEEFD9A2176374E00FD766C /* Build configuration list for PBXProject "Radiator" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3DEEFD962176374E00FD766C;
+			productRefGroup = 3DEEFDA02176374E00FD766C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3DEEFD9E2176374E00FD766C /* Radiator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3DEEFD9D2176374E00FD766C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DEEFDAD2176374E00FD766C /* LaunchScreen.storyboard in Resources */,
+				3DEEFDAA2176374E00FD766C /* Assets.xcassets in Resources */,
+				3DEEFDA82176374E00FD766C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3DEEFD9B2176374E00FD766C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3DEEFDA52176374E00FD766C /* ViewController.swift in Sources */,
+				3DEEFDA32176374E00FD766C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3DEEFDA62176374E00FD766C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3DEEFDA72176374E00FD766C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3DEEFDAB2176374E00FD766C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3DEEFDAC2176374E00FD766C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3DEEFDAF2176374E00FD766C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = Bridge.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		3DEEFDB02176374E00FD766C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = Bridge.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3DEEFDB22176374E00FD766C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3C42F7N9CQ;
+				HEADER_SEARCH_PATHS = $SOURCE_ROOT/include;
+				INFOPLIST_FILE = Radiator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jossy.Radiator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = $SOURCE_ROOT/include/Bridge.h;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "${TARGET_BUILD_DIR}";
+			};
+			name = Debug;
+		};
+		3DEEFDB32176374E00FD766C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3C42F7N9CQ;
+				HEADER_SEARCH_PATHS = $SOURCE_ROOT/include;
+				INFOPLIST_FILE = Radiator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/lib";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jossy.Radiator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = $SOURCE_ROOT/include/Bridge.h;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "${TARGET_BUILD_DIR}";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3DEEFD9A2176374E00FD766C /* Build configuration list for PBXProject "Radiator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DEEFDAF2176374E00FD766C /* Debug */,
+				3DEEFDB02176374E00FD766C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3DEEFDB12176374E00FD766C /* Build configuration list for PBXNativeTarget "Radiator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DEEFDB22176374E00FD766C /* Debug */,
+				3DEEFDB32176374E00FD766C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3DEEFD972176374E00FD766C /* Project object */;
+}
