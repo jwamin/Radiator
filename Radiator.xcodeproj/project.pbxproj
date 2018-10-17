@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D61511621776ECA004E53B4 /* AngleDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61511521776ECA004E53B4 /* AngleDrawView.swift */; };
 		3DEEFDA32176374E00FD766C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEEFDA22176374E00FD766C /* AppDelegate.swift */; };
 		3DEEFDA52176374E00FD766C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEEFDA42176374E00FD766C /* ViewController.swift */; };
 		3DEEFDA82176374E00FD766C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DEEFDA62176374E00FD766C /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D61511521776ECA004E53B4 /* AngleDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleDrawView.swift; sourceTree = "<group>"; };
 		3DEEFD9F2176374E00FD766C /* Radiator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radiator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DEEFDA22176374E00FD766C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DEEFDA42176374E00FD766C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,11 +42,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D61511421776E93004E53B4 /* AngleDrawView */ = {
+			isa = PBXGroup;
+			children = (
+				3D61511521776ECA004E53B4 /* AngleDrawView.swift */,
+			);
+			path = AngleDrawView;
+			sourceTree = "<group>";
+		};
 		3DEEFD962176374E00FD766C = {
 			isa = PBXGroup;
 			children = (
 				3DEEFE02217669C900FD766C /* lib */,
 				3DEEFE01217669BD00FD766C /* include */,
+				3D61511421776E93004E53B4 /* AngleDrawView */,
 				3DEEFDA12176374E00FD766C /* Radiator */,
 				3DEEFDA02176374E00FD766C /* Products */,
 				3DEEFDC521765CF700FD766C /* Frameworks */,
@@ -168,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D61511621776ECA004E53B4 /* AngleDrawView.swift in Sources */,
 				3DEEFDA52176374E00FD766C /* ViewController.swift in Sources */,
 				3DEEFDA32176374E00FD766C /* AppDelegate.swift in Sources */,
 			);
