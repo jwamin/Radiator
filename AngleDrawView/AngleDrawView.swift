@@ -76,23 +76,39 @@ class AngleDrawView: UIView {
         CATransaction.commit()
         
         self.touches = []
-        print("clear",clearArea)
+        //print("clear",clearArea)
         self.setNeedsDisplay(clearArea)
         
     }
     
     func update(touches:[CGPoint],angle:CGFloat){
-        
+        //print(touches.count)
         if (self.touches.count == 0){
             CATransaction.begin()
             CATransaction.setAnimationDuration(duration)
             CATransaction.setDisableActions(true)
+            
             let anim = CABasicAnimation(keyPath: "opacity")
             anim.fromValue = 0.0
             anim.toValue = 1.0
             anim.fillMode = .forwards
             anim.isRemovedOnCompletion = false
-            touchShape.add(anim, forKey: "opacity")
+        
+            
+            
+            let trans = CABasicAnimation(keyPath: "transform")
+            trans.fromValue = CATransform3DConcat(CATransform3DScale(CATransform3DIdentity, 10.0, 10.0, 10.0), CATransform3DRotate(CATransform3DIdentity, 1.570796, 0.0, 0.0, 1.0))
+            trans.toValue = CATransform3DIdentity
+            trans.fillMode = .forwards
+            trans.isRemovedOnCompletion = false
+            
+            let group = CAAnimationGroup()
+            group.duration = duration
+            group.fillMode = .forwards
+            group.isRemovedOnCompletion = false
+            group.animations = [anim,trans]
+            
+            touchShape.add(group, forKey: "touchZoom")
             CATransaction.commit()
         }
         
@@ -100,7 +116,9 @@ class AngleDrawView: UIView {
         self.angle = angle
         //rect
         let rect = getClearArea()
+        //print(rect)
         self.setNeedsDisplay()
+        
     }
     
     override func draw(_ rect: CGRect) {
@@ -114,10 +132,24 @@ class AngleDrawView: UIView {
         context?.setLineJoin(.bevel)
         let mid = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
         
+        //Inner Circle
+        context?.beginPath()
+        context?.setLineWidth(1.0)
+        let siedDIm = CGFloat(10.0)
+        let positionAdjust = CGPoint(x: mid.x - siedDIm/2, y:  mid.y - siedDIm/2)
+        context?.strokeEllipse(in: CGRect(origin: positionAdjust, size: CGSize(width: siedDIm, height: siedDIm)))
+        context?.strokePath()
         
-        context?.fillEllipse(in: rect)
+        //Wider Cricle
+        context?.beginPath()
+        context?.setLineWidth(2.0)
+        let siedDIm2 = CGFloat(250.0)
+        let posAdjust = CGPoint(x: mid.x - siedDIm2/2, y:  mid.y - siedDIm2/2)
+        context?.strokeEllipse(in: CGRect(origin: posAdjust, size: CGSize(width: siedDIm2, height: siedDIm2)))
+        context?.strokePath()
         
         
+        context?.setLineWidth(1.0)
         for touch in touches {
             
             let touchmid = CGPoint(x: touch.x - (dimension/2), y: touch.y - (dimension/2))
@@ -128,7 +160,6 @@ class AngleDrawView: UIView {
             context?.strokePath()
             
             touchShape.frame.origin = touchmid
-            print(touchShape.frame.origin)
             
             context?.beginPath()
             
