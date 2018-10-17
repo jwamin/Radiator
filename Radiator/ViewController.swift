@@ -13,6 +13,12 @@ class ViewController: UIViewController {
     var drawingView:AngleDrawView!
     var label:UILabel!
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        get {
+            return UIStatusBarStyle.lightContent
+        }
+    }
+    
     var radians = true {
         didSet{
             
@@ -23,10 +29,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        
+        
         print90DegreesInRadians()
         
-        drawingView = AngleDrawView(frame:self.view.bounds)
-        
+        drawingView = AngleDrawView(box:self.view.frame)
         self.view.addSubview(drawingView)
         
         setupLabel()
@@ -46,9 +53,9 @@ class ViewController: UIViewController {
             let labelFrame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height/3)
             label = UILabel(frame: labelFrame)
             label.translatesAutoresizingMaskIntoConstraints = false
+            label.numberOfLines = 0
             label.textColor = UIColor.white
             label.textAlignment = .center
-            label.text = "test"
             label.layer.borderColor = UIColor.red.cgColor
             label.layer.borderWidth = 1.0
             
@@ -117,9 +124,10 @@ class ViewController: UIViewController {
 
         let angle = calculateAngle(touch: pointouches.first!)
         let angleString = (angle<0) ? -angle : .pi - angle + .pi
-        let labelString = (radians) ? "Radians: " : "Degrees: "
-        let convertedAngle = (radians) ? angleString : CGFloat(radToDegrees(Double(angleString)))
-        label.text = "\(labelString): \(convertedAngle)"
+        var labelString = "x:\(round(pointouches.first!.x)) y:\(round(pointouches.first!.y)) \n"
+        labelString += (radians) ? "Radians: " : "Degrees: "
+        let convertedAngle =  (radians) ? angleString : CGFloat(radToDegrees(Double(angleString)))
+        label.text = "\(labelString) \(String(format: "%.3f", convertedAngle))"
         drawingView.update(touches: pointouches,angle:angle)
     }
     

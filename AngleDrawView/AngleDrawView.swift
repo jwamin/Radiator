@@ -17,6 +17,39 @@ class AngleDrawView: UIView {
     var touches:[CGPoint] = []
     var angle:CGFloat = 0.0
     let dimension:CGFloat = 60.0
+    let touchShape = CAShapeLayer()
+    let duration:CFTimeInterval = 0.2
+    
+    var size:CGSize!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    convenience init(box: CGRect) {
+        self.init(frame: box)
+        size = CGSize(width: dimension, height: dimension)
+        setupShape()
+    }
+    
+    func setupShape(){
+        
+        
+            touchShape.frame = CGRect(origin: .zero, size: size)
+            touchShape.path = CGPath(rect: touchShape.frame, transform: nil)
+            touchShape.fillColor = UIColor.clear.cgColor
+            touchShape.lineWidth = 1.0
+            touchShape.actions = ["position":NSNull()]
+            touchShape.opacity = 0.0
+            touchShape.strokeColor = UIColor.red.cgColor
+            self.layer.addSublayer(touchShape)
+        
+
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private func getClearArea()->CGRect{
         
@@ -30,12 +63,38 @@ class AngleDrawView: UIView {
     
     func clear(){
         let clearArea = getClearArea()
+        
+        CATransaction.begin()
+        CATransaction.setAnimationDuration(duration)
+        CATransaction.setDisableActions(true)
+        let anim = CABasicAnimation(keyPath: "opacity")
+        anim.fromValue = 1.0
+        anim.toValue = 0.0
+        anim.fillMode = .forwards
+        anim.isRemovedOnCompletion = false
+        touchShape.add(anim, forKey: "opacity")
+        CATransaction.commit()
+        
         self.touches = []
         print("clear",clearArea)
         self.setNeedsDisplay(clearArea)
+        
     }
     
     func update(touches:[CGPoint],angle:CGFloat){
+        
+        if (self.touches.count == 0){
+            CATransaction.begin()
+            CATransaction.setAnimationDuration(duration)
+            CATransaction.setDisableActions(true)
+            let anim = CABasicAnimation(keyPath: "opacity")
+            anim.fromValue = 0.0
+            anim.toValue = 1.0
+            anim.fillMode = .forwards
+            anim.isRemovedOnCompletion = false
+            touchShape.add(anim, forKey: "opacity")
+            CATransaction.commit()
+        }
         
         self.touches = touches
         self.angle = angle
@@ -54,7 +113,7 @@ class AngleDrawView: UIView {
         context?.setLineWidth(1.0)
         context?.setLineJoin(.bevel)
         let mid = CGPoint(x: self.bounds.midX, y: self.bounds.midY)
-        var rect = CGRect(origin: mid, size: CGSize(width: dimension, height: dimension))
+        
         
         context?.fillEllipse(in: rect)
         
@@ -68,8 +127,8 @@ class AngleDrawView: UIView {
             context?.addLine(to: touch)
             context?.strokePath()
             
-            rect.origin = touchmid
-            context?.stroke(rect)
+            touchShape.frame.origin = touchmid
+            print(touchShape.frame.origin)
             
             context?.beginPath()
             
