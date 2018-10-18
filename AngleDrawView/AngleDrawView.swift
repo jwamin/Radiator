@@ -9,26 +9,24 @@
 import UIKit
 
 class AngleDrawView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-  */
-   
-    var angle:CGFloat = 0.0
-    let dimension:CGFloat = 60.0
-    var touchShapes:[UITouch:CAShapeLayer] = [:]
-    let duration:CFTimeInterval = 0.2
     
-    var size:CGSize!
+    let dimension:CGFloat = Settings.dimension
+    let duration:CFTimeInterval = Settings.duration
+    
+    var angle:CGFloat = 0.0
+    
+    private var touchSize:CGSize!
+    
+    var touchShapes:[UITouch:CAShapeLayer] = [:]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     convenience init(box: CGRect) {
+        
         self.init(frame: box)
-        size = CGSize(width: dimension, height: dimension)
+        touchSize = CGSize(width: dimension, height: dimension)
         
     }
     
@@ -36,7 +34,7 @@ class AngleDrawView: UIView {
         
             let touchShape = CAShapeLayer()
             let point = touch.location(in: self)
-            touchShape.frame = CGRect(origin: .zero, size: size)
+            touchShape.frame = CGRect(origin: .zero, size: touchSize)
             touchShape.path = CGPath(rect: touchShape.frame, transform: nil)
             touchShape.fillColor = UIColor.clear.cgColor
             touchShape.lineWidth = 1.0
@@ -98,7 +96,7 @@ class AngleDrawView: UIView {
     }
     
     func clear(touch:UITouch){
-        let clearArea = getClearArea()
+        //let clearArea = getClearArea()
         
         if let touchShape = touchShapes[touch]{
             CATransaction.begin()
@@ -111,18 +109,17 @@ class AngleDrawView: UIView {
             anim.isRemovedOnCompletion = false
             
             touchShape.add(anim, forKey: "opacity")
-            CATransaction.setCompletionBlock {
-                touchShape.removeFromSuperlayer()
-                self.touchShapes.removeValue(forKey: touch)
-            }
+            
+            CATransaction.setCompletionBlock({
+                
+                    print("fadeout complete")
+                    //touchShape.removeFromSuperlayer()
+                    self.touchShapes.removeValue(forKey: touch)
+                    self.setNeedsDisplay()
+            })
+            
             CATransaction.commit()
             
-            
-            
-            print(touchShapes.count)
-            
-            //print("clear",clearArea)
-            self.setNeedsDisplay(clearArea)
             
         }
         
@@ -134,9 +131,7 @@ class AngleDrawView: UIView {
         
         //update location of existing touches
         //angle is from first touch
-//        for (index,touch) in touches.enumerated(){
-//
-//        }
+
         let point = touch.location(in: self)
         let touchmid = CGPoint(x: point.x - (dimension/2), y: point.y - (dimension/2))
         
@@ -144,15 +139,19 @@ class AngleDrawView: UIView {
         
         self.angle = angle
         //rect
-        let rect = getClearArea()
+        //let rect = getClearArea()
         //print(rect)
         self.setNeedsDisplay()
         
     }
     
+    /*
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     */
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        print(touchShapes.count)
+        //print(touchShapes.count)
         //print("drawing",touches.count,rect)
         let context = UIGraphicsGetCurrentContext()
         context?.clear(rect)

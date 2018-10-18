@@ -10,8 +10,16 @@ import UIKit
 
 class ParentViewController: UIViewController {
 
+    //UI Elements
+    
     var drawVC:DrawViewController!
     var label:UILabel!
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        get {
+            return UIStatusBarStyle.lightContent
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
