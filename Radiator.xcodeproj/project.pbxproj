@@ -9,18 +9,19 @@
 /* Begin PBXBuildFile section */
 		3D61511621776ECA004E53B4 /* AngleDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61511521776ECA004E53B4 /* AngleDrawView.swift */; };
 		3DEEFDA32176374E00FD766C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEEFDA22176374E00FD766C /* AppDelegate.swift */; };
-		3DEEFDA52176374E00FD766C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEEFDA42176374E00FD766C /* ViewController.swift */; };
+		3DEEFDA52176374E00FD766C /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEEFDA42176374E00FD766C /* ParentViewController.swift */; };
 		3DEEFDA82176374E00FD766C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DEEFDA62176374E00FD766C /* Main.storyboard */; };
 		3DEEFDAA2176374E00FD766C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DEEFDA92176374E00FD766C /* Assets.xcassets */; };
 		3DEEFDAD2176374E00FD766C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DEEFDAB2176374E00FD766C /* LaunchScreen.storyboard */; };
 		3DEEFE0421766B3100FD766C /* libRadiatorConverter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DEEFDE32176604B00FD766C /* libRadiatorConverter.a */; };
+		3DF4B1BA2178E64C000C38D0 /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF4B1B92178E64C000C38D0 /* DrawViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3D61511521776ECA004E53B4 /* AngleDrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleDrawView.swift; sourceTree = "<group>"; };
 		3DEEFD9F2176374E00FD766C /* Radiator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radiator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DEEFDA22176374E00FD766C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3DEEFDA42176374E00FD766C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3DEEFDA42176374E00FD766C /* ParentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		3DEEFDA72176374E00FD766C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3DEEFDA92176374E00FD766C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DEEFDAC2176374E00FD766C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -28,6 +29,7 @@
 		3DEEFDE32176604B00FD766C /* libRadiatorConverter.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libRadiatorConverter.a; sourceTree = "<group>"; };
 		3DEEFDE6217660BF00FD766C /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
 		3DEEFE192176748400FD766C /* convertAngle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = convertAngle.h; sourceTree = "<group>"; };
+		3DF4B1B92178E64C000C38D0 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				3DEEFDA22176374E00FD766C /* AppDelegate.swift */,
-				3DEEFDA42176374E00FD766C /* ViewController.swift */,
+				3DEEFDA42176374E00FD766C /* ParentViewController.swift */,
+				3DF4B1B92178E64C000C38D0 /* DrawViewController.swift */,
 				3DEEFDA62176374E00FD766C /* Main.storyboard */,
 				3DEEFDA92176374E00FD766C /* Assets.xcassets */,
 				3DEEFDAB2176374E00FD766C /* LaunchScreen.storyboard */,
@@ -179,8 +182,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DF4B1BA2178E64C000C38D0 /* DrawViewController.swift in Sources */,
 				3D61511621776ECA004E53B4 /* AngleDrawView.swift in Sources */,
-				3DEEFDA52176374E00FD766C /* ViewController.swift in Sources */,
+				3DEEFDA52176374E00FD766C /* ParentViewController.swift in Sources */,
 				3DEEFDA32176374E00FD766C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
