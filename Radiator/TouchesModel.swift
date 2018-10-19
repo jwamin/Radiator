@@ -38,7 +38,7 @@ class TouchesContainer : NSObject{
     
     func addTouchContainer(for touch:UITouch){
         
-        let touchContainer = TouchContainer()
+        let touchContainer = TouchContainer(index: touches.count)
         
         if let mostRecentTouch = mostRecentTouch{
             let last = touches[mostRecentTouch]
@@ -89,13 +89,20 @@ class TouchContainer : NSObject {
         }
     }
     
+    private let index:Int!
+    
     private weak var next:TouchContainer?
     private weak var prev:TouchContainer?
     
-    override init() {
+    init(index:Int) {
+        self.index = index
         super.init()
         shapeLayer = CAShapeLayer()
         
+    }
+    
+    func getIndex()->Int{
+        return self.index
     }
     
     func getPrev()->TouchContainer?{
@@ -121,12 +128,7 @@ class TouchContainer : NSObject {
     
     func updateAngle(angle:CGFloat){
         
-       
-        
-            
            self.angle = angle
-        
-        
         
     }
     

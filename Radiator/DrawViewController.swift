@@ -63,9 +63,6 @@ class DrawViewController: UIViewController,TouchModelDelegate {
     }
     
     
-    
-    
-    
     func print90DegreesInRadians(){
         var degrees = 90.0
         
@@ -109,14 +106,6 @@ class DrawViewController: UIViewController,TouchModelDelegate {
         
     }
     
-    func calculateAngle(touch:CGPoint) -> CGFloat{
-        let mid = CGPoint(x: self.drawingView.bounds.midX, y: self.drawingView.bounds.midY)
-        let dx = -(touch.x - mid.x)
-        let dy = -(touch.y - mid.y)
-        let angle = atan2(dx, dy)
-        return CGFloat(angle)
-    }
-    
     func setLabel(position:CGPoint?,angle:CGFloat){
         
         // adjust atan2 auotpu for 360degree / 3.14*2 format
@@ -143,7 +132,7 @@ class DrawViewController: UIViewController,TouchModelDelegate {
     func updateAngle(){
         if let firstTouchShape = touchModel.touches.first{
             let firstTouchLocation = firstTouchShape.key.location(in: drawingView)
-            angle = calculateAngle(touch: firstTouchLocation)
+            angle = firstTouchShape.value.getAngle()
             setLabel(position: firstTouchLocation, angle: angle)
         } else {
             setLabel(position: nil, angle: drawingView.angle)

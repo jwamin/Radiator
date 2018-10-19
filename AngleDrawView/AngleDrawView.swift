@@ -183,9 +183,9 @@ class AngleDrawView: UIView {
         context?.setLineWidth(1.0)
         if let data = data{
             
-        var i = 0
+        
         for (key,container) in data.touches{
-            i += 1
+            
             context?.beginPath()
             context?.move(to: mid)
             context?.addLine(to: key.location(in: self))
@@ -196,7 +196,7 @@ class AngleDrawView: UIView {
             
             let endangle =  -container.getAngle() - CGFloat(degToRad(90.0))
             context?.beginPath()
-            context?.addArc(center: mid, radius: dimension/2 + CGFloat(10 * i), startAngle: startAngle, endAngle: endangle, clockwise: false)
+            context?.addArc(center: mid, radius: dimension/2 + CGFloat(10 * container.getIndex()), startAngle: startAngle, endAngle: endangle, clockwise: false)
             context?.strokePath()
             
             
