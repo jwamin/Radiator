@@ -36,6 +36,16 @@ class TouchesContainer : NSObject{
         return CGFloat(angle)
     }
     
+    func positionTextLabel(for container:TouchContainer){
+        let radius = Settings.dimension + CGFloat(10 * container.getIndex())
+        let mid = CGPoint(x: poistionView.bounds.midX, y: poistionView.bounds.midY)
+        let positionAngle = container.getAngle()/2
+        let x = radius * cos(positionAngle) + mid.x
+        let y = radius * sin(positionAngle) + mid.y
+        let point = CGPoint(x: x, y: y)
+        container.positionandSetLabel(position: point)
+    }
+    
     func addTouchContainer(for touch:UITouch){
         
         let touchContainer = TouchContainer(index: touches.count)
@@ -50,6 +60,7 @@ class TouchesContainer : NSObject{
         mostRecentTouch = touch
         
         touchContainer.setPosition(point: touch.location(in: poistionView))
+        positionTextLabel(for: touchContainer)
         touches[touch] = touchContainer
         print("added",touches.count)
         delegate?.addedShape(touchContainer)
@@ -61,6 +72,7 @@ class TouchesContainer : NSObject{
             //print("updated",touches.count)
             shapeContainer.setPosition(point: touch.location(in: poistionView))
             shapeContainer.updateAngle(angle: calculateAngle(for: touch))
+            positionTextLabel(for: shapeContainer)
             delegate?.updatedShape(shapeContainer)
         }
         
@@ -82,12 +94,8 @@ class TouchesContainer : NSObject{
 class TouchContainer : NSObject {
     
     private var shapeLayer:CAShapeLayer!
-    
-    private var angle:CGFloat = 0.0{
-        didSet{
-            print("self: \(String(format: "%p", unsafeBitCast(self, to: Int.self))) has angle \(angle)")
-        }
-    }
+    private var textLayer:CATextLayer!
+    private var angle:CGFloat = 0.0
     
     private let index:Int!
     
@@ -98,19 +106,33 @@ class TouchContainer : NSObject {
         self.index = index
         super.init()
         shapeLayer = CAShapeLayer()
+        textLayer = CATextLayer()
+        
+        textLayer.frame = CGRect(origin: .zero, size: CGSize(width: 100, height: 20))
+        textLayer.actions = ["position":NSNull()]
+        textLayer.string = "test"
+        textLayer.fontSize = 20
+        textLayer.foregroundColor = UIColor.red.cgColor
         
     }
     
     func getIndex()->Int{
+        
         return self.index
+        
     }
     
     func getPrev()->TouchContainer?{
         
-        if let prev = prev{
-           return prev
-        }
-        return nil
+        return prev
+        
+    }
+    
+    func positionandSetLabel(position:CGPoint){
+   
+        textLayer.string = DrawViewController.angleString(angle: angle, radians: false)
+        textLayer.backgroundColor = UIColor.red.cgColor
+        textLayer.position = position
     }
     
     func getAngle()->CGFloat{
@@ -123,7 +145,7 @@ class TouchContainer : NSObject {
     
     func updateNext(next: TouchContainer){
         self.next = next
-        print("self: \(String(format: "%p", unsafeBitCast(self, to: Int.self))) has next \(String(format: "%p", unsafeBitCast(next, to: Int.self))) and prev \(String(format: "%p", unsafeBitCast(prev, to: Int.self)))")
+        //print("self: \(String(format: "%p", unsafeBitCast(self, to: Int.self))) has next \(String(format: "%p", unsafeBitCast(next, to: Int.self))) and prev \(String(format: "%p", unsafeBitCast(prev, to: Int.self)))")
     }
     
     func updateAngle(angle:CGFloat){
@@ -134,10 +156,11 @@ class TouchContainer : NSObject {
     
     func setPosition(point:CGPoint){
         shapeLayer.position = point
+        
     }
     
-    func getShape()->CAShapeLayer{
-        return shapeLayer
+    func getShapes()->(CAShapeLayer,CATextLayer){
+        return (shapeLayer,textLayer)
     }
     
     deinit {

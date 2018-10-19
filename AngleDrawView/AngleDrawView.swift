@@ -33,7 +33,7 @@ class AngleDrawView: UIView {
     
     func setupShape(shapeContainer:TouchContainer){
         
-            let touchShape = shapeContainer.getShape()
+            let (touchShape,label) = shapeContainer.getShapes()
             touchShape.frame = CGRect(origin: .zero, size: touchSize)
             touchShape.path = CGPath(rect: touchShape.frame, transform: nil)
             touchShape.fillColor = UIColor.clear.cgColor
@@ -42,6 +42,8 @@ class AngleDrawView: UIView {
             touchShape.opacity = 0.0
             touchShape.strokeColor = UIColor.red.cgColor
             self.layer.addSublayer(touchShape)
+        
+            self.layer.addSublayer(label)
         
             CATransaction.begin()
             CATransaction.setAnimationDuration(duration)
@@ -120,8 +122,16 @@ class AngleDrawView: UIView {
     func clear(shapeContainer:TouchContainer){
         //let clearArea = getClearArea()
         
+        shapeContainer.getShapes().1.removeFromSuperlayer()
+        
         CATransaction.begin()
         CATransaction.setAnimationDuration(duration)
+        CATransaction.setCompletionBlock({            
+            print("fadeout complete")
+            
+            shapeContainer.getShapes().0.removeFromSuperlayer()
+            self.setNeedsDisplay()
+        })
         CATransaction.setDisableActions(true)
         let anim = CABasicAnimation(keyPath: "opacity")
         anim.fromValue = 1.0
@@ -129,14 +139,9 @@ class AngleDrawView: UIView {
         anim.fillMode = .forwards
         anim.isRemovedOnCompletion = false
         
-        shapeContainer.getShape().add(anim, forKey: "opacity")
+        shapeContainer.getShapes().0.add(anim, forKey: "opacity")
         
-        CATransaction.setCompletionBlock({
-            
-            print("fadeout complete")
-            //touchShape.removeFromSuperlayer()
-            self.setNeedsDisplay()
-        })
+
         
         CATransaction.commit()
         

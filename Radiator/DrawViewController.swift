@@ -10,7 +10,7 @@ import UIKit
 
 class DrawViewController: UIViewController,TouchModelDelegate {
 
-    
+    //Instance Variables
     
     var drawingView:AngleDrawView!
     var touchModel:TouchesContainer!
@@ -28,8 +28,6 @@ class DrawViewController: UIViewController,TouchModelDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
-        
         print90DegreesInRadians()
         self.view.translatesAutoresizingMaskIntoConstraints = false
         drawingView = AngleDrawView(box:self.view.frame)
@@ -43,9 +41,7 @@ class DrawViewController: UIViewController,TouchModelDelegate {
         touchModel.delegate = self
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        drawingView.setNeedsDisplay()
-    }
+    //Layout methods
     
     func setupConstraints(){
         
@@ -54,46 +50,37 @@ class DrawViewController: UIViewController,TouchModelDelegate {
         NSLayoutConstraint(item: drawingView, attribute: .left, relatedBy: .equal, toItem: self.view, attribute: .left, multiplier: 1.0, constant: 0.0).isActive = true
         NSLayoutConstraint(item: drawingView, attribute: .right, relatedBy: .equal, toItem: self.view, attribute: .right, multiplier: 1.0, constant: 0.0).isActive = true
         
-        
     }
+    
+    //Actions
     
     @objc func handleChange(_ recognizer:UIGestureRecognizer){
         print("tap")
         radians = !radians
     }
     
+    // Responder Methods
     
-    func print90DegreesInRadians(){
-        var degrees = 90.0
-        
-        let radians = degToRad(degrees)
-        
-        print("radians: \(radians)")
-        print("pointerRadians: \(pointerToRadians(&degrees))")
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        drawingView.setNeedsDisplay()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //print("began \(touches.count)")
         for touch in touches{
-            //drawingView.setupShape(touch: touch)
+
             touchModel.addTouchContainer(for: touch)
             updateAngle()
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //print("movedd \(touches.count)")
+
         //handle first point position, set label
         updateAngle()
         
         for touch in touches{
-            //drawingView.update(touch: touch,angle:angle)
+
             touchModel.updateTouchContainer(at: touch)
-            //            if let coalesced = event?.coalescedTouches(for: touch){
-            //                for touch in coalesced{
-            //                    pointouches.append(touch.location(in: self.drawingView))
-            //                }
-            //            }
         }
     }
     
@@ -106,26 +93,35 @@ class DrawViewController: UIViewController,TouchModelDelegate {
         
     }
     
-    func setLabel(position:CGPoint?,angle:CGFloat){
-        
+    //UI Updates
+    
+    public static func angleString(angle:CGFloat,radians:Bool)->NSAttributedString{
         // adjust atan2 auotpu for 360degree / 3.14*2 format
         let angleString = (angle<0) ? -angle : .pi - angle + .pi
-        
-        //if first touch coordinate is available, concat to string
-        let labelString = (position != nil) ? "x:\(round(position!.x)) y:\(round(position!.y)) \n" : ""
-        
         //Fix value for desired unit
         let convertedAngle =  (radians) ? angleString : CGFloat(radToDegrees(Double(angleString)))
         
         //Fix suffix for desired unit, format for attributed display
         let suffixString = (radians) ? NSAttributedString(string: "c", attributes: [.baselineOffset:10,.font:UIFont.systemFont(ofSize: 10)]) : NSAttributedString(string: "°");
         
-        //concat attributed strings
-        let attributed = NSMutableAttributedString(string: "\(labelString) \(String(format: "%.3f", convertedAngle))")
-        attributed.append(suffixString)
+        let mutable = NSMutableAttributedString(string: "\(String(format: "%.3f", convertedAngle))")
+        mutable.append(suffixString)
+        
+        return mutable
+        
+    }
+    
+    func setLabel(position:CGPoint?,angle:CGFloat){
+        
+        
+        
+        //if first touch coordinate is available, concat to string
+        let labelString = (position != nil) ? "x:\(round(position!.x)) y:\(round(position!.y)) \n" : ""
+        
+        let attrstring = DrawViewController.angleString(angle: angle, radians: radians)
         
         //set label on parent
-        (parent as! ParentViewController).label.attributedText = attributed
+        (parent as! ParentViewController).label.attributedText = attrstring
     }
     
     
@@ -153,6 +149,17 @@ class DrawViewController: UIViewController,TouchModelDelegate {
     func removedShape(_ hashedShape: TouchContainer) {
         drawingView.clear(shapeContainer: hashedShape)
         drawingView.update(snapshot: touchModel)
+    }
+    
+    //Diagnostic
+
+    func print90DegreesInRadians(){
+        var degrees = 90.0
+        
+        let radians = degToRad(degrees)
+        
+        print("radians: \(radians)")
+        print("pointerRadians: \(pointerToRadians(&degrees))")
     }
     
 }
