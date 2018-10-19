@@ -16,6 +16,7 @@
 		3DEEFE0421766B3100FD766C /* libRadiatorConverter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DEEFDE32176604B00FD766C /* libRadiatorConverter.a */; };
 		3DF4B1BA2178E64C000C38D0 /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF4B1B92178E64C000C38D0 /* DrawViewController.swift */; };
 		3DF4B1BC21790760000C38D0 /* TouchesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF4B1BB21790760000C38D0 /* TouchesModel.swift */; };
+		57F00C7E217A8A9000B0B65F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 57F00C7D217A8A8F00B0B65F /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		3DEEFE192176748400FD766C /* convertAngle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = convertAngle.h; sourceTree = "<group>"; };
 		3DF4B1B92178E64C000C38D0 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
 		3DF4B1BB21790760000C38D0 /* TouchesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchesModel.swift; sourceTree = "<group>"; };
+		57F00C7D217A8A8F00B0B65F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		3DEEFD962176374E00FD766C = {
 			isa = PBXGroup;
 			children = (
+				57F00C7D217A8A8F00B0B65F /* README.md */,
 				3DEEFE02217669C900FD766C /* lib */,
 				3DEEFE01217669BD00FD766C /* include */,
 				3DEEFDA12176374E00FD766C /* Radiator */,
@@ -198,6 +201,7 @@
 			files = (
 				3DEEFDAD2176374E00FD766C /* LaunchScreen.storyboard in Resources */,
 				3DEEFDAA2176374E00FD766C /* Assets.xcassets in Resources */,
+				57F00C7E217A8A9000B0B65F /* README.md in Resources */,
 				3DEEFDA82176374E00FD766C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
