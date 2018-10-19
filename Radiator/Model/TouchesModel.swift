@@ -22,6 +22,8 @@ class TouchesContainer : NSObject{
     
     var delegate:TouchModelDelegate?
     
+    var radians = true
+    
     init(view:UIView) {
         super.init()
         poistionView = view
@@ -43,7 +45,7 @@ class TouchesContainer : NSObject{
         let x = radius * cos(positionAngle) + mid.x
         let y = radius * sin(positionAngle) + mid.y
         let point = CGPoint(x: x, y: y)
-        container.positionandSetLabel(position: point)
+        container.positionandSetLabel(position: point, radians: radians)
     }
     
     func addTouchContainer(for touch:UITouch){
@@ -128,9 +130,9 @@ class TouchContainer : NSObject {
         
     }
     
-    func positionandSetLabel(position:CGPoint){
+    func positionandSetLabel(position:CGPoint,radians:Bool){
    
-        textLayer.string = DrawViewController.angleString(angle: angle, radians: false)
+        textLayer.string = DrawViewController.angleString(angle: angle, radians: radians)
         textLayer.backgroundColor = UIColor.red.cgColor
         textLayer.position = position
     }

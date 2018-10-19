@@ -46,12 +46,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3D61511421776E93004E53B4 /* AngleDrawView */ = {
+		3D61511421776E93004E53B4 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				3D61511521776ECA004E53B4 /* AngleDrawView.swift */,
 			);
-			path = AngleDrawView;
+			path = View;
+			sourceTree = "<group>";
+		};
+		3D65910A217A6733001E21AD /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3DEEFDA42176374E00FD766C /* ParentViewController.swift */,
+				3DF4B1B92178E64C000C38D0 /* DrawViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		3D65910B217A675B001E21AD /* nib - storyboard Views (Largely Unused) */ = {
+			isa = PBXGroup;
+			children = (
+				3DEEFDA62176374E00FD766C /* Main.storyboard */,
+				3DEEFDAB2176374E00FD766C /* LaunchScreen.storyboard */,
+			);
+			path = "nib - storyboard Views (Largely Unused)";
+			sourceTree = "<group>";
+		};
+		3D65910C217A677B001E21AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3DF4B1BB21790760000C38D0 /* TouchesModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		3DEEFD962176374E00FD766C = {
@@ -59,7 +85,6 @@
 			children = (
 				3DEEFE02217669C900FD766C /* lib */,
 				3DEEFE01217669BD00FD766C /* include */,
-				3D61511421776E93004E53B4 /* AngleDrawView */,
 				3DEEFDA12176374E00FD766C /* Radiator */,
 				3DEEFDA02176374E00FD766C /* Products */,
 				3DEEFDC521765CF700FD766C /* Frameworks */,
@@ -78,12 +103,11 @@
 			isa = PBXGroup;
 			children = (
 				3DEEFDA22176374E00FD766C /* AppDelegate.swift */,
-				3DEEFDA42176374E00FD766C /* ParentViewController.swift */,
-				3DF4B1B92178E64C000C38D0 /* DrawViewController.swift */,
-				3DF4B1BB21790760000C38D0 /* TouchesModel.swift */,
-				3DEEFDA62176374E00FD766C /* Main.storyboard */,
+				3D65910C217A677B001E21AD /* Model */,
+				3D61511421776E93004E53B4 /* View */,
+				3D65910A217A6733001E21AD /* View Controllers */,
+				3D65910B217A675B001E21AD /* nib - storyboard Views (Largely Unused) */,
 				3DEEFDA92176374E00FD766C /* Assets.xcassets */,
-				3DEEFDAB2176374E00FD766C /* LaunchScreen.storyboard */,
 				3DEEFDAE2176374E00FD766C /* Info.plist */,
 			);
 			path = Radiator;

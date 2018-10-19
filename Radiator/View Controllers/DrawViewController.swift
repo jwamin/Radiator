@@ -18,6 +18,7 @@ class DrawViewController: UIViewController,TouchModelDelegate {
     var radians = true {
         didSet{
             print("radians set: \(radians)")
+            touchModel.radians = radians
             updateAngle()
         }
     }
