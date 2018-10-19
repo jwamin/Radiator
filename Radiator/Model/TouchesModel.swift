@@ -64,8 +64,8 @@ class TouchesContainer : NSObject{
         touchContainer.setPosition(point: touch.location(in: poistionView))
         positionTextLabel(for: touchContainer)
         touches[touch] = touchContainer
-        print("added",touches.count)
         delegate?.addedShape(touchContainer)
+        
     }
     
     func updateTouchContainer(at touch:UITouch){
@@ -85,7 +85,6 @@ class TouchesContainer : NSObject{
         if let shapeContainer = touches[touch]{
             delegate?.removedShape(shapeContainer)
             touches.removeValue(forKey: touch)
-            print("removed",touches.count)
         }
         
     }
@@ -135,6 +134,7 @@ class TouchContainer : NSObject {
         textLayer.string = DrawViewController.angleString(angle: angle, radians: radians)
         textLayer.backgroundColor = UIColor.red.cgColor
         textLayer.position = position
+        
     }
     
     func getAngle()->CGFloat{

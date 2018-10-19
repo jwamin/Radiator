@@ -27,7 +27,7 @@ class ParentViewController: UIViewController {
         self.addChild(drawVC)
         self.view.addSubview(drawVC.view)
         self.view.backgroundColor = UIColor.black
-        setupLabel()
+        //setupLabel()
         setupConstraints()
     }
     
@@ -43,14 +43,16 @@ class ParentViewController: UIViewController {
         
         NSLayoutConstraint(item: drawVC.view, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .topMargin, multiplier: 1.0, constant: 0.0).isActive = true
         
-        NSLayoutConstraint(item: drawVC.view, attribute: .bottom, relatedBy: .equal, toItem: label, attribute: .top, multiplier: 1.0, constant: 0.0).isActive = true
+            NSLayoutConstraint(item: drawVC.view, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottomMargin, multiplier: 1.0, constant: 0.0).isActive = true
+        
+        //NSLayoutConstraint(item: drawVC.view, attribute: .bottom, relatedBy: .equal, toItem: label, attribute: .top, multiplier: 1.0, constant: 0.0).isActive = true
         
         //labelconstriants
-        NSLayoutConstraint(item: label, attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 0.2, constant: 0.0).isActive = true
-        
-        NSLayoutConstraint(item: label, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1.0, constant: 0.0).isActive = true
-        
-        NSLayoutConstraint(item: label, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottomMargin, multiplier: 1.0, constant: 0.0).isActive = true
+//        NSLayoutConstraint(item: label, attribute: .height, relatedBy: .equal, toItem: self.view, attribute: .height, multiplier: 0.2, constant: 0.0).isActive = true
+//
+//        NSLayoutConstraint(item: label, attribute: .width, relatedBy: .equal, toItem: self.view, attribute: .width, multiplier: 1.0, constant: 0.0).isActive = true
+//
+//        NSLayoutConstraint(item: label, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottomMargin, multiplier: 1.0, constant: 0.0).isActive = true
     }
     
     func setupLabel(){

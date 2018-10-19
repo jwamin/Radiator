@@ -114,15 +114,19 @@ class DrawViewController: UIViewController,TouchModelDelegate {
     
     func setLabel(position:CGPoint?,angle:CGFloat){
         
+        if let label = (parent as! ParentViewController).label{
+            
+            //if first touch coordinate is available, concat to string
+            //let labelString = (position != nil) ? "x:\(round(position!.x)) y:\(round(position!.y)) \n" : ""
+            
+            let attrstring = DrawViewController.angleString(angle: angle, radians: radians)
+            
+            //set label on parent
+            label.attributedText = attrstring
+            
+        }
         
-        
-        //if first touch coordinate is available, concat to string
-        let labelString = (position != nil) ? "x:\(round(position!.x)) y:\(round(position!.y)) \n" : ""
-        
-        let attrstring = DrawViewController.angleString(angle: angle, radians: radians)
-        
-        //set label on parent
-        (parent as! ParentViewController).label.attributedText = attrstring
+
     }
     
     
