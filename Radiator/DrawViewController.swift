@@ -8,7 +8,9 @@
 
 import UIKit
 
-class DrawViewController: UIViewController {
+class DrawViewController: UIViewController,TouchModelDelegate {
+
+    
     
     var drawingView:AngleDrawView!
     var touchModel:TouchesContainer!
@@ -38,7 +40,7 @@ class DrawViewController: UIViewController {
         setupConstraints()
         
         touchModel = TouchesContainer(view: drawingView)
-        
+        touchModel.delegate = self
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -76,7 +78,7 @@ class DrawViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //print("began \(touches.count)")
         for touch in touches{
-            drawingView.setupShape(touch: touch)
+            //drawingView.setupShape(touch: touch)
             touchModel.addTouchContainer(for: touch)
             updateAngle()
         }
@@ -88,7 +90,7 @@ class DrawViewController: UIViewController {
         updateAngle()
         
         for touch in touches{
-            drawingView.update(touch: touch,angle:angle)
+            //drawingView.update(touch: touch,angle:angle)
             touchModel.updateTouchContainer(at: touch)
             //            if let coalesced = event?.coalescedTouches(for: touch){
             //                for touch in coalesced{
@@ -101,7 +103,7 @@ class DrawViewController: UIViewController {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         for touch in touches{
-            drawingView.clear(touch: touch)
+            //drawingView.clear(touch: touch)
             touchModel.removeTouchContainer(for: touch)
         }
         
@@ -139,7 +141,7 @@ class DrawViewController: UIViewController {
     
     
     func updateAngle(){
-        if let firstTouchShape = drawingView.touchShapes.first{
+        if let firstTouchShape = touchModel.touches.first{
             let firstTouchLocation = firstTouchShape.key.location(in: drawingView)
             angle = calculateAngle(touch: firstTouchLocation)
             setLabel(position: firstTouchLocation, angle: angle)
@@ -148,7 +150,21 @@ class DrawViewController: UIViewController {
         }
     }
     
-
+    //TouchModel Delegate methods
+    
+    func addedShape(_ hashedShape: TouchContainer) {
+        drawingView.setupShape(shapeContainer: hashedShape)
+        drawingView.update(snapshot: touchModel)
+    }
+    
+    func updatedShape(_ hashedShape: TouchContainer) {
+        drawingView.update(snapshot: touchModel)
+    }
+    
+    func removedShape(_ hashedShape: TouchContainer) {
+        drawingView.clear(shapeContainer: hashedShape)
+        drawingView.update(snapshot: touchModel)
+    }
     
 }
 

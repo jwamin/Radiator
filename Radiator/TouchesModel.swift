@@ -8,11 +8,19 @@
 
 import UIKit
 
+protocol TouchModelDelegate {
+    func addedShape(_ hashedShape:TouchContainer)
+    func updatedShape(_ hashedShape:TouchContainer)
+    func removedShape(_ hashedShape:TouchContainer)
+}
+
 class TouchesContainer : NSObject{
     
     var touches:[UITouch:TouchContainer] = [:]
     var mostRecentTouch:UITouch?
     var poistionView:UIView!
+    
+    var delegate:TouchModelDelegate?
     
     init(view:UIView) {
         super.init()
@@ -34,7 +42,7 @@ class TouchesContainer : NSObject{
         touchContainer.setPosition(point: touch.location(in: poistionView))
         touches[touch] = touchContainer
         print("added",touches.count)
-        
+        delegate?.addedShape(touchContainer)
     }
     
     func updateTouchContainer(at touch:UITouch){
@@ -42,13 +50,19 @@ class TouchesContainer : NSObject{
         if let shapeContainer = touches[touch]{
             //print("updated",touches.count)
             shapeContainer.setPosition(point: touch.location(in: poistionView))
+            delegate?.updatedShape(shapeContainer)
         }
         
     }
     
     func removeTouchContainer(for touch:UITouch){
-        touches.removeValue(forKey: touch)
-        print("removed",touches.count)
+        
+        if let shapeContainer = touches[touch]{
+            delegate?.removedShape(shapeContainer)
+            touches.removeValue(forKey: touch)
+            print("removed",touches.count)
+        }
+        
     }
     
 }
@@ -84,6 +98,10 @@ class TouchContainer : NSObject {
     
     func setPosition(point:CGPoint){
         shapeLayer.position = point
+    }
+    
+    func getShape()->CAShapeLayer{
+        return shapeLayer
     }
     
     deinit {
