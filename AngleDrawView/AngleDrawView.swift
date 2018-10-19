@@ -94,12 +94,12 @@ class AngleDrawView: UIView {
     }
     
   
-    
+    var data:TouchesContainer?
     
     func update(snapshot:TouchesContainer){
         
         touches = Array(snapshot.touches.keys)
-        
+        data = snapshot
         setNeedsDisplay()
         //update location of existing touches
         //angle is from first touch
@@ -181,23 +181,29 @@ class AngleDrawView: UIView {
         
         
         context?.setLineWidth(1.0)
-        
-        for touch in touches{
+        if let data = data{
             
+        var i = 0
+        for (key,container) in data.touches{
+            i += 1
             context?.beginPath()
             context?.move(to: mid)
-            context?.addLine(to: touch.location(in: self))
+            context?.addLine(to: key.location(in: self))
             context?.strokePath()
+            
+            let prevAngle = (container.getPrev() != nil) ? container.getPrev()!.getAngle() : CGFloat(0.0)
+            let startAngle = -CGFloat(degToRad(90.0)) - prevAngle
+            
+            let endangle =  -container.getAngle() - CGFloat(degToRad(90.0))
+            context?.beginPath()
+            context?.addArc(center: mid, radius: dimension/2 + CGFloat(10 * i), startAngle: startAngle, endAngle: endangle, clockwise: false)
+            context?.strokePath()
+            
             
         }
 
-        
-        let startAngle = -CGFloat(degToRad(90.0))
-        let endangle =  -angle - CGFloat(degToRad(90.0))
-        context?.beginPath()
-        context?.addArc(center: mid, radius: dimension/2, startAngle: startAngle, endAngle: endangle, clockwise: false)
-        context?.strokePath()
-        
+        }
+
 
         
         
